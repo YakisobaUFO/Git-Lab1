@@ -12,11 +12,21 @@ public class Administration {
      * @param start character we are concerned with
      */
     public ArrayList<Student> orderStudents(UniClass class1, char start){
-        ArrayList<Student > list = new ArrayList<>();
+        ArrayList<Student> list = new ArrayList<>();
         start = Character.toLowerCase(start);
         //TODO: Write the method described above
-
-        return null;
+        String lName;  // last name of the student
+        for(Student stu: class1.getStudents()) {
+        	// Get the last name of the student
+        	// The last name is the substring of the student name at index from ' '+1.
+        	lName = stu.getName().substring(stu.getName().indexOf(' ') +1 );
+        	if (Character.toLowerCase(lName.charAt(0)) == start) 
+        		list.add(stu);
+        }
+        if (list.size()>0)
+        	return list;
+        else
+        	return null;
     }
 
     /**
@@ -27,17 +37,19 @@ public class Administration {
     public ArrayList<Student> intersection(Student[] class1, Student[] class2){
         ArrayList<Student> list = new ArrayList<>();
         //TODO: alter method to account for empty lists in some way
-        for (Student stud1: class1){
-            for (Student stud2: class2){
-
-                if(stud1.equals(stud2) && !list.contains(stud1)){
-                    list.add(stud1);
-                }
-
-
-            }
+        if (class1.length>0 && class2.length>0) {
+	        for (Student stud1: class1){
+	            for (Student stud2: class2){
+	
+	                if(stud1.equals(stud2) && !list.contains(stud1)){
+	                    list.add(stud1);
+	                }
+	
+	
+	            }
+	        }
+	        return list;
         }
-
-        return list;
+        return null;
     }
 }

@@ -50,6 +50,7 @@ public class AdministrationTest {
     @Test
     void testIntersection2(){
         //TODO: alter the intersection method to account for the test failing
+    	
         ArrayList<Student> results = admin.intersection(COSC222.getStudents(),new Student[]{});
         assertTrue(results == null);
 
@@ -60,12 +61,18 @@ public class AdministrationTest {
     //(i.e. think about corner cases)
     @Test
     void testListStudents1(){
-    
+    	ArrayList<Student> list = new ArrayList<>(Arrays.asList(bob, ben));
+    	
+        ArrayList<Student> results = admin.orderStudents(COSC222, 'M');
+        assertTrue(list.containsAll(results) && results.containsAll(list));
+
     }
 
     @Test
     void testListStudents2(){
- 
+    	
+        ArrayList<Student> results = admin.orderStudents(COSC222, 'Z');
+        assertTrue(results == null);
     }
 
 }
